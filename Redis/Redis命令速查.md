@@ -47,8 +47,8 @@
 
 - `KEYS pattern`  
   查找所有符合给定模式的 key
-
-- 例：`KEYS *`(查看所有的 key)
+  
+    例：`KEYS *`(查看所有的 key)
 
 - `EXISTS key`  
   检查给定 key 是否存在
@@ -128,8 +128,8 @@
 
 - `HMSET key field1 value1 [field2 value2 ]`  
   同时将多个 field-value (域-值)对设置到哈希表 key 中
-
-- 例：`127.0.0.1:6379>  HMSET myinfo name "lijiac" address "Guangzhou" age 26`
+  
+    例：`127.0.0.1:6379>  HMSET myinfo name "lijiac" address "Guangzhou" age 26`
 
 - `HMGET key field1 [field2]`  
   获取所有给定字段的值
@@ -172,7 +172,7 @@
 
 # Redis 列表类型相关命令
 
-- `RPUSH key value1 [value2]`
+- `RPUSH key value1 [value2]`  
   在列表中添加一个或多个值
 
 - `LPOP key`  
@@ -196,10 +196,10 @@
 - `LPUSHX key value`  
   将一个或多个值插入到已存在的列表头部
 
-- `RPUSHX key value`
+- `RPUSHX key value`  
   为已存在的列表添加值
 
-- `RPOP key`
+- `RPOP key`  
   移除并获取列表最后一个元素
 
 - `BLPOP key1 [key2 ] timeout`   
@@ -208,7 +208,7 @@
 - `BRPOP key1 [key2 ] timeout`  
   移出并获取列表的最后一个元素， 如果列表没有元素会阻塞列表直到等待超时或发现可弹出元素为止
 
-- `RPOPLPUSH source destination`
+- `RPOPLPUSH source destination`  
   移除列表的最后一个元素，并将该元素添加到另一个列表并返回
 
 - `BRPOPLPUSH source destination timeout`  
@@ -217,151 +217,152 @@
 - `LRANGE key start stop`  
   获取列表指定范围内的元素
 
--	`LTRIM key start stop`
+-	`LTRIM key start stop`  
   对一个列表进行修剪(trim)，就是说，让列表只保留指定区间内的元素，不在指定区间之内的元素都将被删除。
 
 - `LREM key count value`  
   从存于 key 的列表里移除前 count 次出现的值为 value 的元素
-  - count > 0: 从头往尾移除值为 value 的元素。
-  - count < 0: 从尾往头移除值为 value 的元素。
-  - count = 0: 移除所有值为 value 的元素。
+
+    - count > 0: 从头往尾移除值为 value 的元素。
+    - count < 0: 从尾往头移除值为 value 的元素。
+    - count = 0: 移除所有值为 value 的元素。
 
 # Redis 集合类型相关命令
 
-- `SADD key member1 [member2]`
+- `SADD key member1 [member2]`  
   向集合添加一个或多个成员
 
-- `SREM key member1 [member2]`
+- `SREM key member1 [member2]`  
   移除集合中一个或多个成员
 
-- `SPOP key`
+- `SPOP key`  
   移除并返回集合中的一个随机元素
 
-- `SISMEMBER key member`
+- `SISMEMBER key member`  
   判断 member 元素是否是集合 key 的成员
 
-- `SMEMBERS key`
+- `SMEMBERS key`  
   返回集合中的所有成员
 
-- `SCARD key`
+- `SCARD key`  
   获取集合的成员数
 
-- `SINTER key1 [key2]`
+- `SINTER key1 [key2]`  
   返回给定所有集合的交集
 
-- `SUNION key1 [key2]`
+- `SUNION key1 [key2]`  
   返回所有给定集合的并集
 
-- `SDIFF key1 [key2]`
+- `SDIFF key1 [key2]`  
   返回给定所有集合的差集
 
-- `SINTERSTORE destination key1 [key2]`
+- `SINTERSTORE destination key1 [key2]`  
   返回给定所有集合的交集并存储在 destination 中
 
-- `SUNIONSTORE destination key1 [key2]`
+- `SUNIONSTORE destination key1 [key2]`  
   所有给定集合的并集存储在 destination 集合中
 
-- `SDIFFSTORE destination key1 [key2]`
+- `SDIFFSTORE destination key1 [key2]`  
   返回给定所有集合的差集并存储在 destination 中
 
-- `SMOVE source destination member`
+- `SMOVE source destination member`  
   将 member 元素从 source 集合移动到 destination 集合
 
-- `SRANDMEMBER key [count]`
+- `SRANDMEMBER key [count]`  
   返回集合中一个或多个随机元素
 
-- `SSCAN key cursor [MATCH pattern] [COUNT count]`
+- `SSCAN key cursor [MATCH pattern] [COUNT count]`  
   迭代集合中的元素
 
 # Redis 有序集合类型相关命令
 
-- `ZADD key score1 member1 [score2 member2]`
+- `ZADD key score1 member1 [score2 member2]`  
   向有序集合添加一个或多个成员，或者更新已存在成员的分数
 
-- `ZSCORE key member`
+- `ZSCORE key member`  
   返回有序集中，成员的分数值
 
-- `ZRANK key member`
+- `ZRANK key member`  
   返回有序集合中指定成员的索引
 
-- `ZCARD key`
+- `ZCARD key`  
   获取有序集合的成员数
 
-- `ZCOUNT key min max`
+- `ZCOUNT key min max`  
   计算在有序集合中指定区间分数的成员数
 
-- `ZLEXCOUNT key min max`
+- `ZLEXCOUNT key min max`  
   用于计算有序集合中指定成员之间的成员数量
 
-- `ZINCRBY key increment member`
-  有序集合中对指定成员的分数加上增量 increment
+- `ZINCRBY key increment member`  
+  有序集合中对指定成员的分数加上增量 increment  
 
-- `ZRANGE key start stop [WITHSCORES]`
+- `ZRANGE key start stop [WITHSCORES]`  
   通过索引区间返回有序集合中指定区间内的成员
 
-- `ZRANGEBYLEX key min max [LIMIT offset count]`
+- `ZRANGEBYLEX key min max [LIMIT offset count]`  
   通过字典区间返回有序集合的成员
 
-- `ZRANGEBYSCORE key min max [WITHSCORES] [LIMIT]`
+- `ZRANGEBYSCORE key min max [WITHSCORES] [LIMIT]`  
   通过分数返回有序集合指定区间内的成员
 
-- `ZREM key member [member ...]`
+- `ZREM key member [member ...]`  
   移除有序集合中的一个或多个成员
 
-- `ZREMRANGEBYLEX key min max`
+- `ZREMRANGEBYLEX key min max`  
   移除有序集合中给定的字典区间的所有成员
 
-- `ZREMRANGEBYRANK key start stop`
+- `ZREMRANGEBYRANK key start stop`  
   移除有序集合中给定的排名区间的所有成员
 
-- `ZREMRANGEBYSCORE key min max`
+- `ZREMRANGEBYSCORE key min max`  
   移除有序集合中给定的分数区间的所有成员
 
-- `ZREVRANGE key start stop [WITHSCORES]`
+- `ZREVRANGE key start stop [WITHSCORES]`  
   返回有序集中指定区间内的成员，通过索引，分数从高到底
 
-- `ZREVRANGEBYSCORE key max min [WITHSCORES]`
+- `ZREVRANGEBYSCORE key max min [WITHSCORES]`  
   返回有序集中指定分数区间内的成员，分数从高到低排序
 
-- `ZREVRANK key member`
+- `ZREVRANK key member`  
   返回有序集合中指定成员的排名，有序集成员按分数值递减(从大到小)排序
 
-- `ZINTERSTORE destination numkeys key [key ...]`
+- `ZINTERSTORE destination numkeys key [key ...]`  
   计算给定的 numkeys 个有序集合的交集，并且把结果放到 destination 中
 
-- `ZUNIONSTORE destination numkeys key [key ...]`
+- `ZUNIONSTORE destination numkeys key [key ...]`  
   计算给定的 numkeys 个有序集合的并集，并且把结果放到 destination 中
 
-- `ZSCAN key cursor [MATCH pattern] [COUNT count]`
+- `ZSCAN key cursor [MATCH pattern] [COUNT count]`  
   迭代有序集合中的元素（包括元素成员和元素分值）
 
 # Redis 发布订阅命令
 
-- `PUBLISH channel message`
+- `PUBLISH channel message`  
   将信息发送到指定的频道
 
-- `SUBSCRIBE channel [channel ...]`
+- `SUBSCRIBE channel [channel ...]`  
   订阅给定的一个或多个频道的信息
 
-- `UNSUBSCRIBE [channel [channel ...]]`
+- `UNSUBSCRIBE [channel [channel ...]]`  
   退订给定的频道
 
-- `PSUBSCRIBE pattern [pattern ...]`
+- `PSUBSCRIBE pattern [pattern ...]`  
   订阅一个或多个符合给定模式的频道
 
-- `PUNSUBSCRIBE [pattern [pattern ...]]`
+- `PUNSUBSCRIBE [pattern [pattern ...]]`  
   退订所有给定模式的频道
 
-- `PUBSUB subcommand [argument [argument ...]]`
+- `PUBSUB subcommand [argument [argument ...]]`  
   查看订阅与发布系统状态
 
-- `PUBSUB CHANNELS [pattern]`
+- `PUBSUB CHANNELS [pattern]`  
   Lists the currently active channels
 
-- `PUBSUB NUMSUB [channel-1 ... channel-N]`
+- `PUBSUB NUMSUB [channel-1 ... channel-N]`  
   Returns the number of subscribers (not counting clients subscribed to patterns) for the specified channels
 
-- `PUBSUB NUMPAT`
+- `PUBSUB NUMPAT`  
   Returns the number of subscriptions to patterns (that are performed using the PSUBSCRIBE command). Note that this is not just the count of clients subscribed to patterns but the total number of patterns all the clients are subscribed to
 
 # Redis 查看／设置密码
